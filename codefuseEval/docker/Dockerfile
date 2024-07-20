@@ -49,7 +49,8 @@ RUN update-alternatives --install /usr/bin/java java $JAVA_HOME/bin/java 20000 \
     && env
 
 #download benchmark and all dependencies
-RUN git clone https://github.com/codefuse-ai/codefuse-evaluation.git
+RUN git clone https://github.com/simaocunha71/codefuse-evaluation.git
 RUN cd codefuse-evaluation && pip install -r requirements.txt
+RUN pip install git+https://github.com/google-research/bleurt.git
 
 WORKDIR /workspace/codefuse-evaluation/
