@@ -391,7 +391,7 @@ def evaluate_functional_correctness(
         else:
             raise ValueError("problem_file parameter is illgal, can not load")
 
-    suffix = "_evaluation_result.jsonl"
+    suffix = f"_{metric}.jsonl"
 
     for problemfile in problem_files:
         if "trans" in problemfile.lower():
