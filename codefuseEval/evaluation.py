@@ -114,7 +114,9 @@ def process_dataset(sample, problems, test_groundtruth=False):
             code = sample.get("canonical_solution", None)
             if code is None:
                 raise ValueError("can not find reference for sample in test_groundtruth mode", sample)
+            
         sample["generation"] = code
+
     # supplement reference,prevent indicators that call non-pass@k metrics from being able to obtain reference information
     if sample.get("reference", None) is None:
         if sample.get("canonical_solution", None) is not None:
