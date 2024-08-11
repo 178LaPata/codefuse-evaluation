@@ -353,6 +353,7 @@ def evaluate_functional_correctness(
         n_workers: int = 5,
         timeout: float = 120.0,
         metric: str = "pass@k",
+        k_max_value: int = 1,
         problem_file: str = "humaneval_python",
         out_dir: str = None,
         test_groundtruth: bool = False,
@@ -473,6 +474,15 @@ def evaluate_functional_correctness(
             else:
                 evaluate_pass_at_k = False
 
+            ks = []
+
+            if k_max_value >= 1:
+                ks.append(1)
+            if k_max_value >= 10:
+                ks.append(10)
+            if k_max_value >= 100:
+                ks.append(100)
+
             # Calculate pass@k.
             total, correct = [], []
             for result in results.values():
@@ -481,14 +491,21 @@ def evaluate_functional_correctness(
                 correct.append(sum(passed))
             total = np.array(total)
             correct = np.array(correct)
-            if evaluate_pass_at_k:
-                ks = [1, 10, 100]
-                pass_at_k = {f"pass@{k}": estimate_pass_at_k(total, correct, k).mean()
-                             for k in ks if (total >= k).all()}
-                print(pass_at_k)
-            else:
-                print("Total:", np.sum(total))
-                print("Correct:", np.sum(correct))
+            
+            #ks = [1, 10, 100]
+            pass_at_k = {f"pass@{k}": estimate_pass_at_k(total, correct, k).mean()
+                         for k in ks if (total >= k).all()}
+            print(pass_at_k)
+
+            #NOTE: Removed evaluate_pass_at_k because the number of problems is irrelevant to calculate pass@k
+            #if evaluate_pass_at_k:
+            #    #ks = [1, 10, 100]
+            #    pass_at_k = {f"pass@{k}": estimate_pass_at_k(total, correct, k).mean()
+            #                 for k in ks if (total >= k).all()}
+            #    print(pass_at_k)
+            #else:
+            #    print("Total:", np.sum(total))
+            #    print("Correct:", np.sum(correct))
         else:
             if sample_jsonl:
                 task_id = sample_jsonl[0]["task_id"]
