@@ -1,3 +1,14 @@
+### Updated Version of CodeFuseEval for MSc Thesis: "Towards a Platform for Benchmarking Large Language Models"
+#### University of Minho - 2023/2024
+
+Notable updates from the original version:
+- Each metric result is now saved in a separate JSON file.
+- The `k` parameter for the pass@k metric is now passed as an argument, allowing for more targeted calculations:
+  - If `k = 1`, it calculates pass@1.
+  - If `k = 10`, it calculates pass@1 and pass@10.
+  - If `k = 100`, it calculates pass@1, pass@10, and pass@100.
+
+
 # CodeFuseEval: Multi-tasking Evaluation Benchmark for Code Large Language Model
 <p align="center">
   <img src="https://github.com/codefuse-ai/MFTCoder/blob/main/assets/github-codefuse-logo-update.jpg" width="50%" />
