@@ -10,8 +10,6 @@ SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SO
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 MAIN_DIR=$(dirname "$SCRIPT_DIR")
 
-echo $MAIN_DIR
-
  #OUTPUTFILE：file information produced by the model
  #METRIC：evaluation metrics, for example pass@k
  #PROBLEMFILE：path of evaluation dataset
@@ -23,6 +21,6 @@ RUN_EVALUATION_CMD="python3
     --k_max_value $k_max_value \
     --test_groundtruth False"
 
-echo "----------evaluation start!!!------------"
+echo ""
 echo $RUN_EVALUATION_CMD
 eval $RUN_EVALUATION_CMD
