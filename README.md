@@ -1,5 +1,4 @@
-### Updated Version of CodeFuseEval for MSc Thesis: "Towards a Platform for Benchmarking Large Language Models"
-#### University of Minho - 2023/2024
+### Updated Version of CodeFuseEval
 
 Notable updates from the original version:
 - Each metric result is now saved in a separate JSON file.
