@@ -6,7 +6,7 @@ from tqdm.auto import tqdm
 import transformers
 from transformers import GenerationConfig
 from copy import deepcopy
-from util import EVAL_DATASET, DATASET_SUPPORT, ALL_DECODE_MODE, DATASET_LANGUAGE, write_jsonl
+from codefuseEval.util import EVAL_DATASET, DATASET_SUPPORT, ALL_DECODE_MODE, DATASET_LANGUAGE, write_jsonl
 import fire
 import time
 import numpy as np

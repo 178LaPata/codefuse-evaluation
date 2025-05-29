@@ -9,10 +9,13 @@ from typing import *
 from tqdm.auto import tqdm
 from collections import defaultdict, Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from util import IMPORT_HELPER, read_dataset
-from metrics.metric import estimate_pass_at_k
-from execution import check_correctness, check_currentmetric
-from generation import EVAL_DATASET
+from codefuseEval.util import IMPORT_HELPER, read_dataset
+from codefuseEval.metrics.metric import estimate_pass_at_k
+from codefuseEval.execution import check_correctness, check_currentmetric
+from codefuseEval.generation import EVAL_DATASET
+import multiprocessing
+multiprocessing.set_start_method("fork", force=True)
+
 
 LANGUAGE_NAME = {
     "cpp": "CPP",
