@@ -2,10 +2,10 @@
 # Licensed under the MIT license.
 
 # -*- coding:utf-8 -*-
-import metrics.codebleu.bleu as bleu
-import metrics.codebleu.weighted_ngram_match as weighted_ngram_match
-import metrics.codebleu.syntax_match as syntax_match
-import metrics.codebleu.dataflow_match as dataflow_match
+import codefuseEval.metrics.codebleu.bleu as bleu
+import codefuseEval.metrics.codebleu.weighted_ngram_match as weighted_ngram_match
+import codefuseEval.metrics.codebleu.syntax_match as syntax_match
+import codefuseEval.metrics.codebleu.dataflow_match as dataflow_match
 import os
 import json
 

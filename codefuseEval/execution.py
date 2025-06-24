@@ -659,7 +659,7 @@ def reliability_guard(maximum_memory_bytes: Optional[int] = None):
 
 def check_currentmetric(sample_jsonl, metric, lang="python", **kwargs):
     if metric == "codebleu":
-        codebleu_metric = importlib.import_module(".".join(["metrics", "codebleu", "codebleu"]))
+        codebleu_metric = importlib.import_module("codefuseEval.metrics.codebleu.codebleu")
         metric_class = codebleu_metric.CodeBleu
         codebleu = metric_class()
         predictions = [sample.get("generation", "") for sample in sample_jsonl]

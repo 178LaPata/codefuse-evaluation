@@ -1,21 +1,18 @@
-# Copyright (c) Microsoft Corporation. 
-# Licensed under the MIT license.
+from tree_sitter import Language
+import tree_sitter_languages
 
-from tree_sitter import Language, Parser
-
-Language.build_library(
-  # Store the library in the `build` directory
-  'my-languages.so',
-
-  # Include one or more languages
-  [
-    'tree-sitter-go',
-    'tree-sitter-javascript',
-    'tree-sitter-python',
-    'tree-sitter-php',
-    'tree-sitter-java',
-    'tree-sitter-ruby',
-    'tree-sitter-c-sharp',
-  ]
-)
-
+try:
+    import tree_sitter_languages
+    print("tree_sitter_languages is available - using pre-built language parsers")
+    
+    # Example of how to get languages:
+    # python_lang = tree_sitter_languages.get_language('python')
+    # javascript_lang = tree_sitter_languages.get_language('javascript')
+    # etc.
+    
+except ImportError:
+    print("tree_sitter_languages not found. Installing...")
+    import subprocess
+    subprocess.check_call(['pip', 'install', 'tree_sitter_languages'])
+    import tree_sitter_languages
+    print("tree_sitter_languages installed successfully")

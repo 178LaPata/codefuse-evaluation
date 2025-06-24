@@ -1,8 +1,8 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT license.
 
-from metrics.codebleu.parser import DFG_python, DFG_java, DFG_ruby, DFG_go, DFG_php, DFG_javascript, DFG_csharp
-from metrics.codebleu.parser import (remove_comments_and_docstrings,
+from codefuseEval.metrics.codebleu.parser import DFG_python, DFG_java, DFG_ruby, DFG_go, DFG_php, DFG_javascript, DFG_csharp
+from codefuseEval.metrics.codebleu.parser import (remove_comments_and_docstrings,
                     tree_to_token_index,
                     index_to_code_token,
                     tree_to_variable_index)
@@ -27,9 +27,10 @@ def calc_syntax_match(references, candidate, lang):
 
 def corpus_syntax_match(references, candidates, lang):
     path = os.sep.join( os.path.abspath( __file__ ).split( os.sep )[:-1] ) + os.sep
-    JAVA_LANGUAGE = Language( path + 'parser/my-languages.so', lang )
+    # Fix: Language constructor only takes the path to the shared library
+    LANGUAGE = Language(path + 'parser/my-languages.so', lang)
     parser = Parser()
-    parser.set_language( JAVA_LANGUAGE )
+    parser.set_language( LANGUAGE )
     match_count = 0
     total_count = 0
 
