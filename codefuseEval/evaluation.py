@@ -525,6 +525,7 @@ def evaluate_functional_correctness(
                     process_dataset(sample, problems, test_groundtruth)
                 results = check_currentmetric(sample_jsonl, metric, lang, **evaluation_kwargs)
                 print(results)
+                return results
 
         total_time_cost = sum( [sample.get( "processing_time", 0 ) for sample in sample_jsonl] )
         print(f"Generation Total time cost: {total_time_cost}")
