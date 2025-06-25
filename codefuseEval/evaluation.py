@@ -555,6 +555,10 @@ def evaluate_functional_correctness(
         print("Evaluation finished.")
 
     print(f"evaluation all dataset {[problem.split(os.sep)[-1] for problem in problem_files]} finish")
+    if metric == "pass@k":
+        return pass_at_k
+    else:
+        return results
 
 
 if __name__ == "__main__":

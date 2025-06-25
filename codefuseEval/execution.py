@@ -470,6 +470,9 @@ def check_correctness(
     result = manager.list()
 
     p = multiprocessing.Process(target=unsafe_execute, args=(tmp_dir,))
+    ctx = multiprocessing.get_context("fork")
+    p   = ctx.Process(target=unsafe_execute, args=(tmp_dir,))
+
     p.start()
     p.join(timeout=timeout + 1)
     p.terminate()
