@@ -17,6 +17,7 @@ import datasets
 from packaging import version
 
 import evaluate
+import sacrebleu as scb
 
 
 _CITATION = """\
